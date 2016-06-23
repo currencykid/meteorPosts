@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import Accounts from './accounts'; 
 
 export default class Header extends Component {
+  onPostClick(event){
+    //keeps browser from trying to navigate 
+    event.preventDefault();
+
+    Meteor.call('posts.insert'); 
+  }
+
   render(){
     return(
 
@@ -21,7 +28,9 @@ export default class Header extends Component {
               <li>
                 <Accounts /> 
               </li>
-              <li><a href="#">Create</a></li>
+              <li>  
+                <a href="#" onClick={this.onPostClick.bind(this)}>Create</a>
+              </li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
                 <ul className="dropdown-menu">
