@@ -3,10 +3,6 @@ import {Mongo} from 'meteor/mongo';
 Meteor.methods({
   'posts.insert': function(){
 
-    if (!this.userId) {
-      throw new Meteor.Error('not-authorized');
-    }
-
     return Posts.insert({
       createdAt: new Date(), 
       content: '',
